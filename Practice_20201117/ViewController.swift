@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var cellTitleList = ["1. Two Sum"]
+    var viewModel: ViewModel!
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     }
 
     func bind(){
+        viewModel = ViewModel()
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -38,7 +39,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        cell?.textLabel?.text = self.cellTitleList[indexPath.row]
+        let cellTitle = viewModel.getCellTitle(index: indexPath.row)
+        cell?.textLabel?.text = cellTitle
         return cell!
     }
 
