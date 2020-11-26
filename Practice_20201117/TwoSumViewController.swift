@@ -46,15 +46,7 @@ class TwoSumViewController: UIViewController {
             }
             if newNumber != "" {
                 self.nums.append(Int(newNumber)!)
-                var numsString = ""
-                for num in self.nums {
-                    if numsString != "" {
-                        numsString = "\(numsString), \(num)"
-                    } else {
-                        numsString = "\(num)"
-                    }
-                }
-                self.numsLbl.text = "nums: [\(numsString)]"
+                self.setNumLbl()
             }
 
             //Check nums & target
@@ -79,6 +71,30 @@ class TwoSumViewController: UIViewController {
 
     @objc func removeNumBtnAction(){
         print("Remove")
+        if nums.isEmpty {
+            alertMessage(title: "nums is empty", message: nil)
+        }
+        let alertVC = AlertTableViewController()
+        alertVC.tableViewArray = nums
+        alertVC.delegate = self
+
+        let alert = UIAlertController(title: "Remove num", message: "Remove num from nums", preferredStyle: .alert)
+        alert.setValue(alertVC, forKey: "contentViewController")
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    func setNumLbl(){
+        var numsString = ""
+        for num in self.nums {
+            if numsString != "" {
+                numsString = "\(numsString), \(num)"
+            } else {
+                numsString = "\(num)"
+            }
+        }
+        self.numsLbl.text = "nums: [\(numsString)]"
     }
 
     func alertMessage(title:String,message:String?){
@@ -89,17 +105,25 @@ class TwoSumViewController: UIViewController {
     }
 
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
 
 }
 //if let page2VC = storyboard?.instantiateViewController(withIdentifier: "page2Identify") as? Page2ViewController {
 //    navigationController?.pushViewController(page2VC, animated: true)
 //    page2VC.page2ViewModel = Page2ViewModel(apiDatas: apiData)
 //}
+
+extension TwoSumViewController: AlertTableViewControllerDelegate {
+    func setSelected(sentData: String) {
+        let index = nums.firstIndex(of: Int(sentData)!)
+        nums.remove(at: index!)
+        setNumLbl()
+    }
+}
