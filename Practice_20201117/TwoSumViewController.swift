@@ -70,7 +70,6 @@ class TwoSumViewController: UIViewController {
     }
 
     @objc func removeNumBtnAction(){
-        print("Remove")
         if nums.isEmpty {
             alertMessage(title: "nums is empty", message: nil)
         }
@@ -115,10 +114,6 @@ class TwoSumViewController: UIViewController {
      */
 
 }
-//if let page2VC = storyboard?.instantiateViewController(withIdentifier: "page2Identify") as? Page2ViewController {
-//    navigationController?.pushViewController(page2VC, animated: true)
-//    page2VC.page2ViewModel = Page2ViewModel(apiDatas: apiData)
-//}
 
 extension TwoSumViewController: AlertTableViewControllerDelegate {
     func setSelected(sentData: String) {
