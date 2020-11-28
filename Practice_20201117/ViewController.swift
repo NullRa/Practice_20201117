@@ -49,7 +49,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             if let twoSumVC = storyboard?.instantiateViewController(withIdentifier: "TwoSumIdentify") as? TwoSumViewController {
                 navigationController?.pushViewController(twoSumVC, animated: true)
-//                page2VC.page2ViewModel = Page2ViewModel(apiDatas: apiData)
             }
         default:
             print("default")

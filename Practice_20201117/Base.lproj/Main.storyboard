@@ -79,8 +79,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TwoSum1" translatesAutoresizingMaskIntoConstraints="NO" id="Vs2-dj-Vpk">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TwoSum1" translatesAutoresizingMaskIntoConstraints="NO" id="Vs2-dj-Vpk">
                                 <rect key="frame" x="0.0" y="482" width="414" height="380"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Input:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agT-NW-TMO">
                                 <rect key="frame" x="20" y="108" width="43.5" height="20.5"/>
@@ -132,16 +133,13 @@
                             <constraint firstItem="obm-b6-qNK" firstAttribute="trailing" secondItem="WWr-d2-Muy" secondAttribute="trailing" constant="20" id="2I3-2P-Dco"/>
                             <constraint firstItem="obm-b6-qNK" firstAttribute="trailing" secondItem="x5G-Lf-PI9" secondAttribute="trailing" constant="20" id="8xI-dH-5pi"/>
                             <constraint firstItem="obm-b6-qNK" firstAttribute="trailing" secondItem="Jya-cP-CxD" secondAttribute="trailing" constant="20" id="9if-TL-4hl"/>
-                            <constraint firstItem="obm-b6-qNK" firstAttribute="trailing" secondItem="Vs2-dj-Vpk" secondAttribute="trailing" id="BE1-dR-cp7"/>
                             <constraint firstItem="ciy-rW-tOQ" firstAttribute="top" secondItem="JdB-lc-bth" secondAttribute="bottom" constant="10" id="BnW-77-LWR"/>
                             <constraint firstItem="x5G-Lf-PI9" firstAttribute="leading" secondItem="obm-b6-qNK" secondAttribute="leading" constant="20" id="EmP-n7-8Qd"/>
-                            <constraint firstItem="Vs2-dj-Vpk" firstAttribute="leading" secondItem="obm-b6-qNK" secondAttribute="leading" id="Fs8-2U-pQc"/>
                             <constraint firstItem="obm-b6-qNK" firstAttribute="trailing" secondItem="ciy-rW-tOQ" secondAttribute="trailing" constant="20" id="HRO-kw-yp6"/>
                             <constraint firstItem="Jya-cP-CxD" firstAttribute="leading" secondItem="obm-b6-qNK" secondAttribute="leading" constant="20" id="JIF-26-pIB"/>
                             <constraint firstItem="agT-NW-TMO" firstAttribute="top" secondItem="obm-b6-qNK" secondAttribute="top" constant="20" id="KCE-mj-QW3"/>
                             <constraint firstItem="JdB-lc-bth" firstAttribute="top" secondItem="agT-NW-TMO" secondAttribute="bottom" constant="20" id="Mgn-CF-2Dt"/>
                             <constraint firstItem="Jya-cP-CxD" firstAttribute="top" secondItem="WWr-d2-Muy" secondAttribute="bottom" constant="10" id="TYA-NM-evS"/>
-                            <constraint firstItem="Vs2-dj-Vpk" firstAttribute="centerY" secondItem="jXP-AJ-qrt" secondAttribute="centerY" multiplier="1.5" id="X1K-G0-sto"/>
                             <constraint firstItem="JdB-lc-bth" firstAttribute="leading" secondItem="obm-b6-qNK" secondAttribute="leading" constant="20" id="XkP-7O-20k"/>
                             <constraint firstItem="WWr-d2-Muy" firstAttribute="leading" secondItem="obm-b6-qNK" secondAttribute="leading" constant="20" id="YdP-do-d7r"/>
                             <constraint firstItem="ciy-rW-tOQ" firstAttribute="leading" secondItem="obm-b6-qNK" secondAttribute="leading" constant="20" id="e7a-NK-XKx"/>
@@ -149,7 +147,6 @@
                             <constraint firstItem="x5G-Lf-PI9" firstAttribute="top" secondItem="Jya-cP-CxD" secondAttribute="bottom" constant="20" id="lHj-RM-B2n"/>
                             <constraint firstItem="obm-b6-qNK" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="agT-NW-TMO" secondAttribute="trailing" symbolic="YES" id="mdS-Pt-OMr"/>
                             <constraint firstItem="agT-NW-TMO" firstAttribute="leading" secondItem="obm-b6-qNK" secondAttribute="leading" constant="20" id="ttq-6A-ocX"/>
-                            <constraint firstItem="obm-b6-qNK" firstAttribute="bottom" secondItem="Vs2-dj-Vpk" secondAttribute="bottom" id="umb-ag-f5O"/>
                             <constraint firstItem="WWr-d2-Muy" firstAttribute="top" secondItem="ciy-rW-tOQ" secondAttribute="bottom" constant="20" id="vKH-a2-pRn"/>
                         </constraints>
                     </view>
