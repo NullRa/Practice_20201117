@@ -48,19 +48,7 @@ class TwoSumViewController: UIViewController {
                 self.twoSumViewModel.setTarget(newTarget: Int(newNumber)!)
                 self.targetLbl.text = "Target: \(newNumber)"
             }
-
-            //Check nums & target
-            if let outputString = self.twoSumViewModel.checkNumsAndTarget() {
-                self.outputLbl.text = outputString
-            } else {
-
-            }
-
-            //Fixme
-            //Deal nums & target
-//            print("nums: \(self.nums)")
-            //checkOutput check targetNum not nil
-//            print("targetNum: \(self.targetNum!)")
+            self.outputSetting()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
@@ -81,19 +69,7 @@ class TwoSumViewController: UIViewController {
             if newNumber != "" {
                 self.numsLbl.text = self.twoSumViewModel.appendNums(num: Int(newNumber)!)
             }
-
-            //Check nums & target
-            if let outputString = self.twoSumViewModel.checkNumsAndTarget() {
-                self.outputLbl.text = outputString
-            } else {
-
-            }
-
-            //FIXME
-            //Deal nums & target
-//            print("nums: \(self.nums)")
-            //checkOutput check targetNum not nil
-//            print("targetNum: \(self.targetNum!)")
+            self.outputSetting()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
@@ -123,6 +99,15 @@ class TwoSumViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
+    func outputSetting(){
+        //Check nums & target
+        if let outputString = self.twoSumViewModel.checkNumsAndTarget() {
+            self.outputLbl.text = outputString
+        } else {
+
+        }
+    }
+
     /*
      // MARK: - Navigation
 
@@ -138,12 +123,6 @@ class TwoSumViewController: UIViewController {
 extension TwoSumViewController: AlertTableViewControllerDelegate {
     func setSelected(sentData: String) {
         numsLbl.text = twoSumViewModel.removeValueFromNums(element: Int(sentData)!)
-
-        //Check nums & target
-        if let outputString = self.twoSumViewModel.checkNumsAndTarget() {
-            self.outputLbl.text = outputString
-        } else {
-
-        }
+        outputSetting()
     }
 }
