@@ -164,6 +164,6 @@ extension TwoSumViewController: AlertTableViewControllerDelegate {
         let index = nums.firstIndex(of: Int(sentData)!)
         nums.remove(at: index!)
         setNumLbl()
-        self.checkOutput()
+        let _ = self.checkOutput()
     }
 }

@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Practice_20201117" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewIdentify" id="BYZ-38-t0r" customClass="ViewController" customModule="Practice_20201117" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,7 +64,7 @@
                     <navigationItem key="navigationItem" id="pen-N3-ben"/>
                     <connections>
                         <outlet property="tableView" destination="G2Y-lE-msj" id="dpZ-LB-Efq"/>
-                        <segue destination="tIR-mc-vPq" kind="show" identifier="" id="MBI-w3-nnn"/>
+                        <segue destination="tIR-mc-vPq" kind="show" identifier="viewToTwoSumIdentiflier" id="MBI-w3-nnn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
