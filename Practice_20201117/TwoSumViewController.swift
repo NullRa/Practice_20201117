@@ -32,6 +32,38 @@ class TwoSumViewController: UIViewController {
     func bind(){
         addNumbBtn.addTarget(self, action: #selector(addNumBtnAction), for: .touchUpInside)
         removeNumBtn.addTarget(self, action: #selector(removeNumBtnAction), for: .touchUpInside)
+        targetBtn.addTarget(self, action: #selector(targetAction), for: .touchUpInside)
+    }
+
+    @objc func targetAction(){
+        let alert = UIAlertController(title: "Add Target", message: "Enter A Target", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Enter a new target."
+            textField.keyboardType = .numberPad
+        }
+        let addAction = UIAlertAction(title: "ADD", style: .default) { (_) in
+            guard let newNumber = ((alert.textFields?.first)! as UITextField).text else {
+                return
+            }
+            if newNumber != "" {
+                self.targetNum = Int(newNumber)
+                self.setTarget()
+            }
+
+            //Check nums & target
+            if self.checkOutput() == false {
+                return
+            }
+
+            //Deal nums & target
+            print("nums: \(self.nums)")
+            //checkOutput check targetNum not nil
+            print("targetNum: \(self.targetNum!)")
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        alert.addAction(addAction)
+        self.present(alert, animated: true, completion: nil)
     }
 
     @objc func addNumBtnAction(){
@@ -94,6 +126,10 @@ class TwoSumViewController: UIViewController {
             }
         }
         self.numsLbl.text = "nums: [\(numsString)]"
+    }
+
+    func setTarget(){
+        targetLbl.text = "Target: \(targetNum!)"
     }
 
     func alertMessage(title:String,message:String?){
