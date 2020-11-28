@@ -21,16 +21,15 @@ class TwoSumViewModel {
         target = newTarget
     }
 
-    func appendNums(num:Int){
+    func appendNums(num:Int) -> String{
         nums.append(num)
+        return getNumsLblString()
     }
 
-    func removeValueFromNums(element: Int) -> Bool{
-        guard let index = nums.firstIndex(of: element) else {
-            return false
-        }
+    func removeValueFromNums(element: Int) -> String{
+        let index = nums.firstIndex(of: element)!
         nums.remove(at: index)
-        return true
+        return getNumsLblString()
     }
 
     func checkNumsEmpty() -> Bool{
@@ -51,5 +50,15 @@ class TwoSumViewModel {
             }
         }
         return string
+    }
+
+    func checkNumsAndTarget() -> String? {
+        if nums.isEmpty {
+            return "Output: Nums is empty."
+        }
+        if target == nil {
+            return "Output: Target is nil."
+        }
+        return nil
     }
 }
