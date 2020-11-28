@@ -82,18 +82,14 @@ class TwoSumViewController: UIViewController {
             }
 
             //Check nums & target
-            if self.nums.isEmpty {
-                self.alertMessage(title: "Nums is empty", message: nil)
-                return
-            }
-            guard let targetNum = self.targetNum else {
-                self.alertMessage(title: "Target is nil", message: nil)
+            if self.checkOutput() == false {
                 return
             }
 
             //Deal nums & target
             print("nums: \(self.nums)")
-            print("targetNum: \(targetNum)")
+            //checkOutput check targetNum not nil
+            print("targetNum: \(self.targetNum!)")
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
@@ -139,6 +135,18 @@ class TwoSumViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
+    func checkOutput() -> Bool {
+        if self.nums.isEmpty {
+            self.outputLbl.text = "Output: Nums is empty."
+            return false
+        }
+        if self.targetNum == nil {
+            self.outputLbl.text = "Output: Target is nil."
+            return false
+        }
+        return true
+    }
+
     /*
      // MARK: - Navigation
 
@@ -156,5 +164,6 @@ extension TwoSumViewController: AlertTableViewControllerDelegate {
         let index = nums.firstIndex(of: Int(sentData)!)
         nums.remove(at: index!)
         setNumLbl()
+        self.checkOutput()
     }
 }
