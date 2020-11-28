@@ -20,6 +20,7 @@
 		69D68D07256F72FC0000DA89 /* AlertTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D68D06256F72FC0000DA89 /* AlertTableViewController.swift */; };
 		69D68D0D256F76320000DA89 /* AlertViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D68D0B256F76320000DA89 /* AlertViewTableViewCell.swift */; };
 		69D68D0E256F76320000DA89 /* AlertViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D68D0C256F76320000DA89 /* AlertViewTableViewCell.xib */; };
+		69D68D33257239C60000DA89 /* TwoSumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D68D32257239C60000DA89 /* TwoSumViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		69D68D06256F72FC0000DA89 /* AlertTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewController.swift; sourceTree = "<group>"; };
 		69D68D0B256F76320000DA89 /* AlertViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewTableViewCell.swift; sourceTree = "<group>"; };
 		69D68D0C256F76320000DA89 /* AlertViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertViewTableViewCell.xib; sourceTree = "<group>"; };
+		69D68D32257239C60000DA89 /* TwoSumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSumViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				69D68CDA256E351D0000DA89 /* TwoSumViewController.swift */,
+				69D68D32257239C60000DA89 /* TwoSumViewModel.swift */,
 			);
 			name = TwoSum;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				6930D14B2565245900337854 /* ViewController.swift in Sources */,
 				6930D1472565245900337854 /* AppDelegate.swift in Sources */,
 				69D68CCB256E2E400000DA89 /* ViewModel.swift in Sources */,
+				69D68D33257239C60000DA89 /* TwoSumViewModel.swift in Sources */,
 				6930D1492565245900337854 /* SceneDelegate.swift in Sources */,
 				69D68D0D256F76320000DA89 /* AlertViewTableViewCell.swift in Sources */,
 				69D68D07256F72FC0000DA89 /* AlertTableViewController.swift in Sources */,

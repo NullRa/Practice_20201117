@@ -8,8 +8,7 @@
 import UIKit
 
 class TwoSumViewController: UIViewController {
-    var nums: [Int] = []
-    var targetNum: Int? = nil
+    var twoSumViewModel = TwoSumViewModel()
 
     @IBOutlet weak var numsLbl: UILabel!
     @IBOutlet weak var addNumbBtn: UIButton!
@@ -46,7 +45,7 @@ class TwoSumViewController: UIViewController {
                 return
             }
             if newNumber != "" {
-                self.targetNum = Int(newNumber)
+                self.twoSumViewModel.setTarget(newTarget: Int(newNumber)!)
                 self.setTarget()
             }
 
@@ -55,10 +54,11 @@ class TwoSumViewController: UIViewController {
                 return
             }
 
+            //Fixme
             //Deal nums & target
-            print("nums: \(self.nums)")
+//            print("nums: \(self.nums)")
             //checkOutput check targetNum not nil
-            print("targetNum: \(self.targetNum!)")
+//            print("targetNum: \(self.targetNum!)")
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
@@ -77,7 +77,7 @@ class TwoSumViewController: UIViewController {
                 return
             }
             if newNumber != "" {
-                self.nums.append(Int(newNumber)!)
+                self.twoSumViewModel.appendNums(num: Int(newNumber)!)
                 self.setNumLbl()
             }
 
@@ -86,10 +86,11 @@ class TwoSumViewController: UIViewController {
                 return
             }
 
+            //FIXME
             //Deal nums & target
-            print("nums: \(self.nums)")
+//            print("nums: \(self.nums)")
             //checkOutput check targetNum not nil
-            print("targetNum: \(self.targetNum!)")
+//            print("targetNum: \(self.targetNum!)")
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
@@ -98,11 +99,11 @@ class TwoSumViewController: UIViewController {
     }
 
     @objc func removeNumBtnAction(){
-        if nums.isEmpty {
+        if twoSumViewModel.checkNumsEmpty() {
             alertMessage(title: "nums is empty", message: nil)
         }
         let alertVC = AlertTableViewController()
-        alertVC.tableViewArray = nums
+        alertVC.tableViewArray = twoSumViewModel.getNums()
         alertVC.delegate = self
 
         let alert = UIAlertController(title: "Remove num", message: "Remove num from nums", preferredStyle: .alert)
@@ -113,19 +114,16 @@ class TwoSumViewController: UIViewController {
     }
 
     func setNumLbl(){
-        var numsString = ""
-        for num in self.nums {
-            if numsString != "" {
-                numsString = "\(numsString), \(num)"
-            } else {
-                numsString = "\(num)"
-            }
-        }
+        let numsString = twoSumViewModel.getNumsLblString()
         self.numsLbl.text = "nums: [\(numsString)]"
     }
 
     func setTarget(){
-        targetLbl.text = "Target: \(targetNum!)"
+        guard let targetNum = twoSumViewModel.getTarget() else {
+            alertMessage(title: "target is nil!!", message: nil)
+            return
+        }
+        targetLbl.text = "Target: \(targetNum)"
     }
 
     func alertMessage(title:String,message:String?){
@@ -136,11 +134,11 @@ class TwoSumViewController: UIViewController {
     }
 
     func checkOutput() -> Bool {
-        if self.nums.isEmpty {
+        if self.twoSumViewModel.checkNumsEmpty() {
             self.outputLbl.text = "Output: Nums is empty."
             return false
         }
-        if self.targetNum == nil {
+        if self.twoSumViewModel.getTarget() == nil {
             self.outputLbl.text = "Output: Target is nil."
             return false
         }
@@ -161,8 +159,10 @@ class TwoSumViewController: UIViewController {
 
 extension TwoSumViewController: AlertTableViewControllerDelegate {
     func setSelected(sentData: String) {
-        let index = nums.firstIndex(of: Int(sentData)!)
-        nums.remove(at: index!)
+        guard twoSumViewModel.removeValueFromNums(element: Int(sentData)!) else {
+            alertMessage(title: "Target is nil!!!!", message: nil)
+            return
+        }
         setNumLbl()
         let _ = self.checkOutput()
     }
