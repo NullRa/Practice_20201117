@@ -44,4 +44,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell!
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            if let twoSumVC = storyboard?.instantiateViewController(withIdentifier: "TwoSumIdentify") as? TwoSumViewController {
+                navigationController?.pushViewController(twoSumVC, animated: true)
+            }
+        default:
+            print("default")
+        }
+    }
+
 }
