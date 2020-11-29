@@ -61,4 +61,32 @@ class TwoSumViewModel {
         }
         return nil
     }
+
+    func getAnswerDict() -> [(Int,Int)] {
+        var answerTupleArray: [(Int,Int)] = []
+        guard let target = target else {
+            return answerTupleArray
+        }
+        var numberIndexDict = [Int:Int]()
+        for (index, num) in nums.enumerated() {
+            guard let pairedIndex = numberIndexDict[target - num] else {
+                numberIndexDict[num] = index
+                continue
+            }
+            answerTupleArray.append((pairedIndex,index))
+        }
+        return answerTupleArray
+    }
+
+    func twoSum() -> String {
+        let answer = getAnswerDict()
+        switch answer.count {
+        case 0:
+            return "No Paired element."
+        case 1:
+            return "[\(answer[0].0), \(answer[0].1)]"
+        default:
+            return "Over 1 solve, first is [\(answer[0].0), \(answer[0].1)]"
+        }
+    }
 }

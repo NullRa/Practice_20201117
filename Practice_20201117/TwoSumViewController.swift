@@ -100,11 +100,10 @@ class TwoSumViewController: UIViewController {
     }
 
     func outputSetting(){
-        //Check nums & target
         if let outputString = self.twoSumViewModel.checkNumsAndTarget() {
             self.outputLbl.text = outputString
         } else {
-
+            self.outputLbl.text = twoSumViewModel.twoSum()
         }
     }
 
