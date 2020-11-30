@@ -34,7 +34,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel.getTableArrayCount()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,6 +49,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             if let twoSumVC = storyboard?.instantiateViewController(withIdentifier: "TwoSumIdentify") as? TwoSumViewController {
                 navigationController?.pushViewController(twoSumVC, animated: true)
+            }
+        case 1:
+            if let addTwoNumbersVC = storyboard?.instantiateViewController(withIdentifier: "AddTwoNumbersIdentify") as? AddTwoNumbersViewController {
+                navigationController?.pushViewController(addTwoNumbersVC, animated: true)
             }
         default:
             print("default")
