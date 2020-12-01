@@ -6,10 +6,26 @@
 //
 
 import UIKit
-
+class ListNode {
+    var val: Int
+    var next: ListNode?
+    init(_ val: Int){
+        self.val = val
+        self.next = nil
+    }
+    func showListString() -> String {
+        var string = "\(val)"
+        var nextNode = next
+        while nextNode != nil {
+            string = "\(string), \(nextNode!.val)"
+            nextNode = nextNode?.next
+        }
+        return string
+    }
+}
 class AddTwoNumbersViewController: UIViewController {
-    var listA:[Int] = []
-    var listB:[Int] = []
+    var listA: ListNode?
+    var listB: ListNode?
 
     @IBOutlet weak var listALbl: UILabel!
     @IBOutlet weak var listABtn: UIButton!
@@ -44,63 +60,93 @@ class AddTwoNumbersViewController: UIViewController {
             }
             if newNumber != "" {
                 var number = Int(newNumber)!
-                var listString = ""
                 if sender.tag == 1 {
-                    self.listA.removeAll()
+                    self.listA = nil
                 } else {
-                    self.listB.removeAll()
+                    self.listB = nil
                 }
                 if number == 0 {
                     if sender.tag == 1 {
-                        self.listA.append(0)
+                        self.listA = ListNode(0)
                     } else {
-                        self.listB.append(0)
+                        self.listB = ListNode(0)
                     }
-                    listString = "0"
                 }
                 while(number%10 > 0 || number > 10){
                     if sender.tag == 1 {
-                        self.listA.append(number%10)
+                        if self.listA == nil {
+                            self.listA = ListNode(number%10)
+                        } else {
+                            var a = self.listA
+                            while a?.next != nil {
+                                a = a?.next
+                            }
+                            a?.next = ListNode(number%10)
+                        }
                     } else {
-                        self.listB.append(number%10)
-                    }
-                    if listString == "" {
-                        listString = "\(number%10)"
-                    } else {
-                        listString = "\(listString), \(number%10)"
+                        if self.listB == nil {
+                            self.listB = ListNode(number%10)
+                        } else {
+                            var b = self.listB
+                            while b?.next != nil {
+                                b = b?.next
+                            }
+                            b?.next = ListNode(number%10)
+                        }
                     }
                     number = number/10
                 }
                 if sender.tag == 1 {
-                    self.listALbl.text = "Input List A: [\(listString)]"
+                    self.listALbl.text = "Input List A: [\(self.listA?.showListString() ?? "ERROR")]"
                 } else {
-                    self.listBLbl.text = "Input List B: [\(listString)]"
+                    self.listBLbl.text = "Input List B: [\(self.listB?.showListString() ?? "ERROR")]"
                 }
             }
-            if self.listA.isEmpty {
+            if self.listA == nil {
                 self.listSumLbl.text = "Output: ListA is empty."
                 return
             }
-            if self.listB.isEmpty{
+            if self.listB == nil{
                 self.listSumLbl.text = "Output: ListB is empty."
                 return
             }
+
+            guard let outputString = self.addTwoNumbers()?.showListString() else {
+                self.alertMessage(title: "ERROR", message: nil)
+                return
+            }
+            self.listSumLbl.text = "Output: [\(outputString)]."
+
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
         alert.addAction(addAction)
         self.present(alert, animated: true, completion: nil)
     }
-    
 
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-
+    func addTwoNumbers() -> ListNode? {
+        var listATail = listA
+        var listBTail = listB
+        var head: ListNode? = nil
+        var tail: ListNode? = nil
+        var carry = 0
+        while listATail != nil || listBTail != nil {
+            let sum = (listATail?.val ?? 0) + (listBTail?.val ?? 0) + carry
+            carry = sum/10
+            let val = sum%10
+            let node = ListNode(val)
+            if head == nil {
+                head = node
+            } else {
+                tail?.next = node
+            }
+            tail = node
+            listATail = listATail?.next
+            listBTail = listBTail?.next
+        }
+        if carry != 0 {
+            tail?.next = ListNode(carry)
+        }
+        return head
+    }
 }
