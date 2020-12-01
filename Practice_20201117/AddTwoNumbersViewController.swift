@@ -19,8 +19,6 @@ class AddTwoNumbersViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         initUI()
         bind()
     }
@@ -47,6 +45,11 @@ class AddTwoNumbersViewController: UIViewController {
             if newNumber != "" {
                 var number = Int(newNumber)!
                 var listString = ""
+                if sender.tag == 1 {
+                    self.listA.removeAll()
+                } else {
+                    self.listB.removeAll()
+                }
                 if number == 0 {
                     if sender.tag == 1 {
                         self.listA.append(0)
@@ -55,7 +58,7 @@ class AddTwoNumbersViewController: UIViewController {
                     }
                     listString = "0"
                 }
-                while(number%10 > 0){
+                while(number%10 > 0 || number > 10){
                     if sender.tag == 1 {
                         self.listA.append(number%10)
                     } else {
@@ -73,9 +76,7 @@ class AddTwoNumbersViewController: UIViewController {
                 } else {
                     self.listBLbl.text = "Input List B: [\(listString)]"
                 }
-                //
             }
-//            self.outputSetting()
             if self.listA.isEmpty {
                 self.listSumLbl.text = "Output: ListA is empty."
                 return
@@ -93,13 +94,13 @@ class AddTwoNumbersViewController: UIViewController {
     
 
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
 
 }
