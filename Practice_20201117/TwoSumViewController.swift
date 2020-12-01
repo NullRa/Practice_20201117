@@ -92,13 +92,6 @@ class TwoSumViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
-    func alertMessage(title:String,message:String?){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Confirm", style: .default, handler: nil)
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-
     func outputSetting(){
         if let outputString = self.twoSumViewModel.checkNumsAndTarget() {
             self.outputLbl.text = outputString
