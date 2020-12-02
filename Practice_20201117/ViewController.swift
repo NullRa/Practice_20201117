@@ -21,7 +21,8 @@ class ViewController: UIViewController {
     }
 
     func initUI(){
-
+//        navigationController?.navigationBar.topItem?.title = "TwoSum"
+        self.title = "LeetCode"
     }
 
     func bind(){
@@ -45,6 +46,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
         case 0:
             if let twoSumVC = storyboard?.instantiateViewController(withIdentifier: "TwoSumIdentify") as? TwoSumViewController {

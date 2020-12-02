@@ -25,7 +25,7 @@ class TwoSumViewController: UIViewController {
     }
 
     func initUI(){
-
+        self.title = "TwoSum"
     }
 
     func bind(){

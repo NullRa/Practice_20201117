@@ -22,7 +22,7 @@ class AddTwoNumbersViewController: UIViewController {
         bind()
     }
     func initUI(){
-
+        self.title = "AddTwoNumbers"
     }
     func bind(){
         addTwoNumbersViewModel = AddTwoNumbersViewModel()
