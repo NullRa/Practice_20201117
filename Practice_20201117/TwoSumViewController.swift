@@ -25,16 +25,16 @@ class TwoSumViewController: UIViewController {
     }
 
     func initUI(){
-
+        self.title = "TwoSum"
     }
 
     func bind(){
         addNumbBtn.addTarget(self, action: #selector(addNumBtnAction), for: .touchUpInside)
         removeNumBtn.addTarget(self, action: #selector(removeNumBtnAction), for: .touchUpInside)
-        targetBtn.addTarget(self, action: #selector(targetAction), for: .touchUpInside)
+        targetBtn.addTarget(self, action: #selector(addTarget), for: .touchUpInside)
     }
 
-    @objc func targetAction(){
+    @objc func addTarget(){
         let alert = UIAlertController(title: "Add Target", message: "Enter A Target", preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Enter a new target."
@@ -92,18 +92,11 @@ class TwoSumViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
-    func alertMessage(title:String,message:String?){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Confirm", style: .default, handler: nil)
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-
     func outputSetting(){
         if let outputString = self.twoSumViewModel.checkNumsAndTarget() {
             self.outputLbl.text = outputString
         } else {
-            self.outputLbl.text = twoSumViewModel.twoSum()
+            self.outputLbl.text = twoSumViewModel.getTwoSumString()
         }
     }
 
