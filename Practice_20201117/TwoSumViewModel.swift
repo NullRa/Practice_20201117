@@ -62,7 +62,12 @@ class TwoSumViewModel {
         return nil
     }
 
-    func getAnswerDict() -> [(Int,Int)] {
+    func twoSum(target:Int?,nums:[Int]) -> [(Int,Int)] {
+        //target = nums[i] + nums[j]
+        //nums[j] = target - nums[i]
+        //準備一個字典dict, key 是 target - nums[index], value 是 nums 的 index
+        //迴圈跑陣列,判斷dict[target - nums[i]]是否存在, 不存在就新增dict[nums[i]] = i
+        //存在即找出答案為 i, dict[target - nums[i]]
         var answerTupleArray: [(Int,Int)] = []
         guard let target = target else {
             return answerTupleArray
@@ -78,8 +83,8 @@ class TwoSumViewModel {
         return answerTupleArray
     }
 
-    func twoSum() -> String {
-        let answer = getAnswerDict()
+    func getTwoSumString() -> String {
+        let answer = twoSum(target: target, nums: nums)
         switch answer.count {
         case 0:
             return "No Paired element."
