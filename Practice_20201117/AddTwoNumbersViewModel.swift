@@ -31,6 +31,20 @@ class AddTwoNumbersViewModel {
         return nil
     }
     func addTwoNumbers() -> ListNode? {
+//        ex.node1 -> node2 -> node3.
+//        node1 round:
+//          head = node1
+//          tail = node1
+
+//        node2 round:
+//          tail.next = node2 means node1.next = node2 means head.next = node2
+//          tail = node2
+
+//        node3 round:
+//          tail.next = node3 means node2.next = node3 means head.next.next = node3
+//          tail = node3
+
+//        while 結束之後判斷 if carry != 0 表示要進位
         var listATail = listA
         var listBTail = listB
         var head: ListNode? = nil

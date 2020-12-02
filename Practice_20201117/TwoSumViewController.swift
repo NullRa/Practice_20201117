@@ -96,7 +96,7 @@ class TwoSumViewController: UIViewController {
         if let outputString = self.twoSumViewModel.checkNumsAndTarget() {
             self.outputLbl.text = outputString
         } else {
-            self.outputLbl.text = twoSumViewModel.twoSum()
+            self.outputLbl.text = twoSumViewModel.getTwoSumString()
         }
     }
 
